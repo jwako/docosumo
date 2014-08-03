@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140803041613) do
 
   create_table "open_data", force: true do |t|
     t.integer  "municipality_id"
-    t.integer  "inidicator_source_id"
+    t.integer  "indicator_source_id"
     t.integer  "value"
     t.integer  "deviation_value"
     t.text     "memo"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20140803041613) do
     t.datetime "updated_at"
   end
 
-  add_index "open_data", ["inidicator_source_id"], name: "index_open_data_on_inidicator_source_id", using: :btree
+  add_index "open_data", ["indicator_source_id"], name: "index_open_data_on_indicator_source_id", using: :btree
   add_index "open_data", ["municipality_id"], name: "index_open_data_on_municipality_id", using: :btree
 
 end

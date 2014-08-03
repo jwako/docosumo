@@ -6,7 +6,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
-admin = Administrator.create(
+admin = Admin.create(
 	email: "junwako@gmail.com", 
 	password: '11111111'
 )

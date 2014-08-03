@@ -31,5 +31,9 @@ module Docosumo
       g.decorator false
     end
 
+    # auto load libs
+    config.autoload_paths += %w(#{config.root}/lib #{config.root}/forms)
+    config.autoload_paths += %w(#{config.root}/lib)
+
   end
 end
