@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803041613) do
+ActiveRecord::Schema.define(version: 20140803075646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140803041613) do
     t.integer  "municipality_id"
     t.integer  "indicator_source_id"
     t.integer  "value"
-    t.integer  "deviation_value"
+    t.float    "deviation_value"
     t.text     "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
