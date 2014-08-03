@@ -1,2 +1,29 @@
-<h1>Top#show</h1>
-<p>Find me in app/views/top/show.html.erb</p>
+<div class="row">
+<div class="col-sm-12">
+	<h3>あなたの重視する項目を選んで下さい</h3>
+
+	<%= form_tag result_top_path do %>
+	<table class="table">
+	<tr>
+		<th class="col-xs-2 text-center">カテゴリ</th>
+		<th class="col-xs-2 text-center">重視しない</th>
+		<th class="col-xs-2 text-center">あまり重視しない</th>
+		<th class="col-xs-2 text-center">どちらでもない</th>
+		<th class="col-xs-2 text-center">わりと重視する</th>
+		<th class="col-xs-2 text-center">重視する</th>
+	</tr>
+		<% @categories.each do |category| %>
+		<tr>
+			<td><%= category.title %></td>
+		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][1]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][2]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][3]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][4]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][5]", true %></td>
+		</tr>
+		<% end %>
+	</table>
+	<%= submit_tag "結果をみる", class: "btn btn-block btn-lg btn-success" %>
+	<% end %>
+</div>
+</div>

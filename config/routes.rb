@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root to: "top#show"
+  resource :top, controller: :top, only: [:show] do
+    post :result
+  end
 
   devise_scope :admin do
     get 'x', to: "devise/sessions#new", as: :admin_root

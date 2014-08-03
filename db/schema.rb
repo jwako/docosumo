@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803075646) do
+ActiveRecord::Schema.define(version: 20140803090653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140803075646) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "sub_title"
+    t.boolean  "active",       default: true, null: false
   end
 
   add_index "indicator_sources", ["indicator_id"], name: "index_indicator_sources_on_indicator_id", using: :btree

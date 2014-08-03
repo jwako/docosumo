@@ -1,0 +1,18 @@
+<div class="row">
+<div class="col-sm-12">
+	<table class="table">
+	<tr>
+		<th class="col-xs-2 text-cebter">Ranking</th>
+		<th class="col-xs-5 text-center">行政区</th>
+		<th class="col-xs-5 text-center">ポイント</th>
+	</tr>
+	<% @cities.each_with_index do |city, i| %>
+	<tr>
+		<td><%= i+1 %></th>
+		<td><%= city[0] %></th>
+		<td class="text-center"><%= city[1] %></th>
+	</tr>
+	<% end %>
+	</table>
+</div>
+</div>

@@ -78,6 +78,15 @@
 # 	:authority	=> "東京都総務局"
 # 	)
 
+# i31 = c3.indicators.create(:title => "小学校数")
+# is31 = i31.indicator_sources.create(
+# 	:title			=> "学校基本調査報告", 
+# 	:sub_title	=> "3.小学校, 3-1.区市町村、学級数別学校数（総数）",
+# 	:year				=> 2013, 
+# 	:url				=> "http://www.toukei.metro.tokyo.jp/gakkou/2013/gk13qg10000.htm",
+# 	:authority	=> "東京都総務局"
+# 	)
+
 # i41 = c4.indicators.create(:title => "図書館数")
 # i42 = c4.indicators.create(:title => "公園数")
 
