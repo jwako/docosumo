@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'bower-rails', '~> 0.8.3'
+gem 'devise'
 
 # RSpec
 group :test, :development do
