@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'bower-rails', '~> 0.8.3'
 gem 'devise'
+gem 'simple_form'
 
 # RSpec
 group :test, :development do

@@ -1,0 +1,25 @@
+<div class="row">
+<dic class="col-sm-12">
+<%= link_to "New category", new_x_category_path, class: "btn btn-success pull-right" %>
+</dic>
+</div>
+
+<table class="table">
+<tr>
+	<th class="col-sm-1">#</th>
+	<th class="col-sm-9">Name</th>
+	<th class="col-sm-1"></th>
+	<th class="col-sm-1"></th>
+</tr>
+<% @categories.each do |category| %>
+<tr>
+	<td><%= category.id %></td>
+	<td><%= category.title %></td>
+	<td class="text-center"><%= link_to "Edit", edit_x_category_path(category), class: "btn btn-block btn-success" %></td>
+	<td class="text-center">
+		<%= link_to "Delete", x_category_path(category), method: :delete, 
+			    			class: "btn btn-danger btn-block", data: { confirm: "本当に削除してもよろしいですか？" } %>
+	</td>
+</tr>
+<% end %>
+</table>

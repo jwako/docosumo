@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   end
   devise_for :admins
   namespace :x do
-		resource :home, controller: :home, only: :show do
-			post :upload
-		end
+		resource :home, controller: :home, only: :show
+    resource :uploaders, only: :show do
+      post :upload
+    end
+    resources :categories do
+      resources :indicators
+    end
 	end
 
 end

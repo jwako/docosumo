@@ -40,7 +40,16 @@
   </div>
   <!--documents-->
   <div class="container documents">
-	<%= yield %>
+		<div class="box">
+		  <div class="row">
+		    <div class="col-md-3">
+			    <%= render "x/common/menu" %>
+		    </div>
+		    <div class="col-md-9">
+		      <%= yield %>
+		    </div>
+		  </div>
+		</div>
 	</div>
 </body>
 </html>
