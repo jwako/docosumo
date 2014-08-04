@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       post :upload
     end
     resources :categories do
-      resources :indicators
+      resources :indicators, shallow: true do
+        resources :indicator_sources
+      end
     end
 	end
 

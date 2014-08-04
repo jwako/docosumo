@@ -1,5 +1,5 @@
 class X::IndicatorsController < AdminController
-	before_filter :setup_context
+	before_filter :setup_context, only: [:index, :new, :create]
 
   def index
   	@indicators = @category.indicators
@@ -48,7 +48,8 @@ class X::IndicatorsController < AdminController
   end
 
   def setup_indicator
-    @indicator = @category.indicators.find(params[:id])
+    @indicator = Indicator.find(params[:id])
+    @category = @indicator.category
   end
 
 end

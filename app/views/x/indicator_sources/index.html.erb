@@ -1,0 +1,41 @@
+<div class="row">
+<dic class="col-sm-12">
+	<h4><%= @indicator.category.title %> > <%= @indicator.title %></h4>
+	<hr>
+</dic>
+</div>
+
+<div class="row">
+<dic class="col-sm-12">
+<%= link_to "New source", new_x_indicator_indicator_source_path(@indicator), class: "btn btn-success pull-right" %>
+</dic>
+</div>
+
+<table class="table">
+<tr>
+	<th class="col-sm-1">#</th>
+	<th class="col-sm-2">Title</th>
+	<th class="col-sm-4">Title</th>
+	<th class="col-sm-1">Year</th>
+	<th class="col-sm-1">Month</th>
+	<th class="col-sm-1">Source</th>
+	<th class="col-sm-1"></th>
+	<th class="col-sm-1"></th>
+</tr>
+<% @sources.each do |source| %>
+<tr>
+	<td><%= source.id %></td>
+	<td><%= source.title %></td>
+	<td><%= source.sub_title %></td>
+	<td><%= source.year %></td>
+	<td><%= source.month %></td>
+	<td><%= link_to "Link", source.url, target: "_blank" %></td>
+	<td class="text-center"><%= link_to "Edit", 
+		edit_x_indicator_source_path(source), class: "btn btn-block btn-success" %></td>
+	<td class="text-center">
+		<%= link_to "Delete", x_indicator_source_path(source), method: :delete, 
+			    			class: "btn btn-danger btn-block", data: { confirm: "本当に削除してもよろしいですか？" } %>
+	</td>
+</tr>
+<% end %>
+</table>
