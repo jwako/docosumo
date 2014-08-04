@@ -1,0 +1,33 @@
+<div class="row">
+<dic class="col-sm-12">
+	<h4><%= @category.title %></h4>
+	<hr>
+</dic>
+</div>
+
+<div class="row">
+<dic class="col-sm-12">
+<%= link_to "New indicator", new_x_category_indicator_path(@category), class: "btn btn-success pull-right" %>
+</dic>
+</div>
+
+<table class="table">
+<tr>
+	<th class="col-sm-1">#</th>
+	<th class="col-sm-9">Name</th>
+	<th class="col-sm-1"></th>
+	<th class="col-sm-1"></th>
+</tr>
+<% @indicators.each do |indicator| %>
+<tr>
+	<td><%= indicator.id %></td>
+	<td><%= indicator.title %></td>
+	<td class="text-center"><%= link_to "Edit", 
+		edit_x_category_indicator_path(@category, indicator), class: "btn btn-block btn-success" %></td>
+	<td class="text-center">
+		<%= link_to "Delete", x_category_indicator_path(@category, indicator), method: :delete, 
+			    			class: "btn btn-danger btn-block", data: { confirm: "本当に削除してもよろしいですか？" } %>
+	</td>
+</tr>
+<% end %>
+</table>

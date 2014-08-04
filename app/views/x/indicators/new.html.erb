@@ -1,0 +1,14 @@
+<div class="box">
+  <h2 class="box-title">Edit category</h2>
+  <div class="row">
+    <div class="col-md-12">
+			<%= simple_form_for @indicator, url: x_category_indicators_path(@category) do |f| %>
+				<%= render "common/error", object: @indicator %>
+				<%= f.input :title %>
+				<%= f.button :submit, "Submit", data: { disable_with: "Sending" } %>
+	    <% end %>
+	    <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
