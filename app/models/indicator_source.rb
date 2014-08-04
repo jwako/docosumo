@@ -3,8 +3,8 @@ class IndicatorSource < ActiveRecord::Base
 	belongs_to :indicator
 	has_many :open_data, dependent: :destroy
 
-	default_scope { where(active: true) }
-	
+	scope :with_active, -> { where(active: true) }
+
 	def average
     open_data.inject(0.0) { |sum, i| sum += i.value } / open_data.size
   end

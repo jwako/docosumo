@@ -7,8 +7,8 @@
 <table class="table">
 <tr>
 	<th class="col-sm-1">#</th>
-	<th class="col-sm-8">Name</th>
-	<th class="col-sm-1"></th>
+	<th class="col-sm-7">Name</th>
+	<th class="col-sm-2">Indicators#</th>
 	<th class="col-sm-1"></th>
 	<th class="col-sm-1"></th>
 </tr>
@@ -16,7 +16,8 @@
 <tr>
 	<td><%= category.id %></td>
 	<td><%= category.title %></td>
-	<td class="text-center"><%= link_to "Show", x_category_indicators_path(category), class: "btn btn-block btn-success" %></td>
+	<td class="text-center"><%= link_to category.indicators.size, 
+		x_category_indicators_path(category), class: "btn btn-info" %></td>
 	<td class="text-center"><%= link_to "Edit", edit_x_category_path(category), class: "btn btn-block btn-success" %></td>
 	<td class="text-center">
 		<%= link_to "Delete", x_category_path(category), method: :delete, 

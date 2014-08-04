@@ -1,9 +1,0 @@
-<h3>Upload OpenData</h3>
-
-<%= form_for @form, url: upload_x_uploaders_path, html: { multipart: true, class: "form-inline" } do |f| %>
-	<%= render "common/error", object: @form %>
-	<div class="form-group">
-	<%= f.file_field :csv_file %>
-	</div>
-	<%= f.submit "Upload", data: { disable_with: "送信中" }, class: "btn btn-default" %>
-<% end %>

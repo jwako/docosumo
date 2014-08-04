@@ -1,0 +1,46 @@
+<div class="row">
+<dic class="col-sm-12">
+	<h4><%= @source.indicator.category.title %> > <%= @source.indicator.title %> > <%= @source.title %></h4>
+	<hr>
+</dic>
+</div>
+
+<div class="row">
+<div class="col-sm-6">
+	<%= form_for @form, url: upload_x_indicator_source_open_data_path(@source), 
+				html: { multipart: true, class: "form-inline" } do |f| %>
+		<%= render "common/error", object: @form %>
+		<div class="form-group">
+		<%= f.file_field :csv_file %>
+		</div>
+		<%= f.submit "Upload", data: { disable_with: "送信中" }, class: "btn btn-success pull-right" %>
+	<% end %>
+</div>
+<div class="col-sm-6">
+<%= link_to "New data", new_x_indicator_source_open_datum_path(@source), class: "btn btn-success pull-right" %>
+</div>
+</div>
+
+<table class="table">
+<tr>
+	<th class="col-sm-1">#</th>
+	<th class="col-sm-3">City</th>
+	<th class="col-sm-3">Value</th>
+	<th class="col-sm-3">DeviationValue</th>
+	<th class="col-sm-1"></th>
+	<th class="col-sm-1"></th>
+</tr>
+<% @data.each do |datum| %>
+<tr>
+	<td><%= datum.id %></td>
+	<td><%= datum.municipality.name %></td>
+	<td><%= datum.value %></td>
+	<td><%= datum.deviation_value %></td>
+	<td class="text-center"><%= link_to "Edit", edit_x_open_datum_path(datum), class: "btn btn-block btn-success" %></td>
+	<td class="text-center">
+		<%= link_to "Delete", x_open_datum_path(datum), method: :delete, 
+			    			class: "btn btn-danger btn-block", data: { confirm: "本当に削除してもよろしいですか？" } %>
+	</td>
+</tr>
+<% end %>
+</table>

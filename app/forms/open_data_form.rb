@@ -15,7 +15,7 @@ class OpenDataForm
   end
 
   attr_reader :data
-  attr_accessor :file
+  attr_accessor :file, :source
 
   validates :file, presence: true
 
@@ -42,12 +42,11 @@ class OpenDataForm
     CSV.parse(Kconv.toutf8(charactor)) do |row|
     	n = n+1
     	next if n == 1 or row.join.blank?
-			is = IndicatorSource.find_by(id: row[1].to_i) if n == 2
-      if n >= 3 && is.present? && row[0].present? 
+      if n >= 2 && @source.present? && row[0].present? 
       	m = Municipality.find_by(name: row[0])
       	puts row[0]
         if m.present? && row[1].present?
-        	datum = is.open_data.new(municipality: m, value: row[1].to_i)
+        	datum = @source.open_data.new(municipality: m, value: row[1].to_i)
           data << datum
         end
       end

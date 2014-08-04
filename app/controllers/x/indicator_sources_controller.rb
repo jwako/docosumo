@@ -37,6 +37,13 @@ class X::IndicatorSourcesController < AdminController
     redirect_to x_indicator_indicator_sources_path(@indicator), notice: "Source was successfully deleted."
   end
 
+  def toggle
+    setup_indicator_source
+    @source.toggle(:active)
+    @source.save!
+    redirect_to x_indicator_indicator_sources_path(@indicator), notice: "Source was successfully toggled."
+  end
+
   private
 
   def setup_context
