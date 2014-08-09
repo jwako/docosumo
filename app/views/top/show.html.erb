@@ -1,7 +1,33 @@
 <div class="row">
-<div class="col-sm-12">
-	<h3>あなたの重視する項目を選んで下さい</h3>
-
+<div class="col-sm-4">
+	<div class="panel panel-default">
+    <div class="panel-heading">
+    	<h3 class="panel-title">あなたの重視する項目を選んで下さい</h3>
+    </div>
+    <div class="panel-body">
+			<table class="table">
+				<tr>
+					<th class="col-xs-5 text-center">カテゴリ</th>
+					<th class="col-xs-7 text-center">
+						<p>重視する度合い</p>
+						<p><small>全く重視しない:0 〜 とても重視する:5</small></p>
+					</th>
+				</tr>
+				<% @categories.each do |category| %>
+				<tr style="height:60px;">
+					<td class="v"><%= category.title %></td>
+					<td class="v">
+						<input id="ex<%= category.id %>" data-slider-id='ex<%= category.id %>Slider' type="text" class="slider" 
+							data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="0"/>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+			<%= submit_tag "結果をみる", class: "btn btn-block btn-lg btn-success" %>
+    </div>
+  </div>
+<%
+=begin%>
 	<%= form_tag result_top_path do %>
 	<table class="table">
 	<tr>
@@ -25,5 +51,21 @@
 	</table>
 	<%= submit_tag "結果をみる", class: "btn btn-block btn-lg btn-success" %>
 	<% end %>
+<%
+=end %>
 </div>
+
+<div class="col-sm-8">
+<% if @cities.present? %>
+	<div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">住みやすさランキング</h3>
+    </div>
+    <div class="panel-body">
+      <%= render "list", cities: @cities %>
+    </div>
+  </div>
+<% end %>
+</div>
+
 </div>

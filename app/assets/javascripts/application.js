@@ -19,5 +19,5 @@
 //= require angular-bootstrap
 //= require jquery-ui
 //= require bootstrap
-//= require jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.js
-//= require jqueryui-timepicker-addon/dist/jquery-ui-sliderAccess.js
+//= require seiyria-bootstrap-slider
+//= require slider.js

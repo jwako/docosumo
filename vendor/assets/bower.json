@@ -9,6 +9,7 @@
     "bootstrap": "latest",
     "jquery-ui": "latest",
     "jqueryui-timepicker-addon": "latest",
-    "Bootflat": "latest"
+    "Bootflat": "latest",
+    "seiyria-bootstrap-slider": "latest"
   }
 }
