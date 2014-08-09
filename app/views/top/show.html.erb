@@ -1,11 +1,16 @@
-<div class="row">
+<div class="row" ng-controller="DocosumoCtrl">
 <div class="col-sm-4">
 	<div class="panel panel-default">
     <div class="panel-heading">
     	<h3 class="panel-title">あなたの重視する項目を選んで下さい</h3>
     </div>
-    <div class="panel-body" ng-controller="DocosumoCtrl">
+    <div class="panel-body">
     	<form class="form" name="docosumo">
+				<div class="alert alert-danger" ng-show="errors">
+				  <ul class="list-unstyled" ng-repeat="error in errors">
+				    <li>{{error}}</li>
+				  </ul>
+				</div>
 				<table class="table">
 					<tr>
 						<th class="col-xs-5 text-center">カテゴリ</th>
@@ -14,59 +19,57 @@
 							<p><small>全く重視しない:0 〜 とても重視する:5</small></p>
 						</th>
 					</tr>
-					<div ng-repeat="category in categories">
-					<tr style="height:60px;">
-						<td class="v">{{ category.title }}</td>
+					<tr style="height:60px;" ng-repeat="category in categories">
+						<td class="v">{{category.title}}</td>
 						<td class="v">
-							<slider ng-model="sliders.sliderValue" min="{{options.min}}" step="{{options.step}}" max="{{options.max}}" value="{{options.value}}" ng-disabled></slider>
+							<slider slider-id="{{$index}}" ng-model="category.sliderValue" min="{{options.min}}" step="{{options.step}}" max="{{options.max}}" value="{{options.value}}" ng-disabled></slider>
 						</td>
 					</tr>
-					</div>
 				</table>
 	      <button class="btn btn-success btn-lg btn-block" ng-click='Create();'>結果をみる</button>
       </form>
     </div>
   </div>
-<%
-=begin%>
-	<%= form_tag result_top_path do %>
-	<table class="table">
-	<tr>
-		<th class="col-xs-2 text-center">カテゴリ</th>
-		<th class="col-xs-2 text-center">重視しない</th>
-		<th class="col-xs-2 text-center">あまり重視しない</th>
-		<th class="col-xs-2 text-center">どちらでもない</th>
-		<th class="col-xs-2 text-center">わりと重視する</th>
-		<th class="col-xs-2 text-center">重視する</th>
-	</tr>
-		<% @categories.each do |category| %>
-		<tr>
-			<td><%= category.title %></td>
-		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][1]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][2]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][3]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][4]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][5]", true %></td>
-		</tr>
-		<% end %>
-	</table>
-	<%= submit_tag "結果をみる", class: "btn btn-block btn-lg btn-success" %>
-	<% end %>
-<%
-=end %>
 </div>
 
 <div class="col-sm-8">
-<% if @cities.present? %>
 	<div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">住みやすさランキング</h3>
     </div>
     <div class="panel-body">
-      <%= render "list", cities: @cities %>
+      <div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+				<tr>
+					<th class="col-xs-2 text-center">ランキング</th>
+					<th class="col-xs-3 text-center">行政区</th>
+					<th class="col-xs-2 text-center">ポイント</th>
+					<th class="col-xs-3 text-center">1位との差</th>
+					<th class="col-xs-2 text-center"></th>
+				</tr>
+				<tr ng-repeat="city in cities">
+					<td class="text-center v">{{$index+1}}</th>
+					<td class="v">{{city[0]}}</th>
+					<td class="text-center v">{{city[1] | number:1}}</th>
+					<td class="v">
+						<div class="progress">
+			        <div class="progress-bar" role="progressbar" 
+			        	aria-valuenow="{{city[1]}}" 
+			        	aria-valuemin="0" 
+			        	aria-valuemax="{{cities[0][1]}}" 
+			        	style="width: {{city[1]/cities[0][1]*100}}%;">
+			        	{{city[1]/cities[0][1]*100 | number:1}}%
+			        </div>
+			      </div>
+					</td>
+					<td class="text-center v"></td>
+				</tr>
+				</table>
+			</div>
+			</div>
     </div>
   </div>
-<% end %>
 </div>
 
 </div>

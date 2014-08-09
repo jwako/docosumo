@@ -9,3 +9,7 @@
 td.v {
 	vertical-align: middle !important;
 }
+
+.progress {
+	margin-bottom: 0px !important;
+}

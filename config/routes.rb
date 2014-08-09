@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "top#show"
-  resource :top, controller: :top, only: [:show] do
+  resource :top, controller: :top, only: [:show, :create] do
     get :categories
     post :result
   end
