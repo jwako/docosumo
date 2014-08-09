@@ -12,4 +12,9 @@ class TopController < ApplicationController
     render :show
   end
 
+  def categories
+    @categories = Category.all
+    render json: @categories
+  end
+
 end

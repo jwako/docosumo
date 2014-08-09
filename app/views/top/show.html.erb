@@ -4,26 +4,27 @@
     <div class="panel-heading">
     	<h3 class="panel-title">あなたの重視する項目を選んで下さい</h3>
     </div>
-    <div class="panel-body">
-			<table class="table">
-				<tr>
-					<th class="col-xs-5 text-center">カテゴリ</th>
-					<th class="col-xs-7 text-center">
-						<p>重視する度合い</p>
-						<p><small>全く重視しない:0 〜 とても重視する:5</small></p>
-					</th>
-				</tr>
-				<% @categories.each do |category| %>
-				<tr style="height:60px;">
-					<td class="v"><%= category.title %></td>
-					<td class="v">
-						<input id="ex<%= category.id %>" data-slider-id='ex<%= category.id %>Slider' type="text" class="slider" 
-							data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="0"/>
-					</td>
-				</tr>
-				<% end %>
-			</table>
-			<%= submit_tag "結果をみる", class: "btn btn-block btn-lg btn-success" %>
+    <div class="panel-body" ng-controller="DocosumoCtrl">
+    	<form class="form" name="docosumo">
+				<table class="table">
+					<tr>
+						<th class="col-xs-5 text-center">カテゴリ</th>
+						<th class="col-xs-7 text-center">
+							<p>重視する度合い</p>
+							<p><small>全く重視しない:0 〜 とても重視する:5</small></p>
+						</th>
+					</tr>
+					<div ng-repeat="category in categories">
+					<tr style="height:60px;">
+						<td class="v">{{ category.title }}</td>
+						<td class="v">
+							<slider ng-model="sliders.sliderValue" min="{{options.min}}" step="{{options.step}}" max="{{options.max}}" value="{{options.value}}" ng-disabled></slider>
+						</td>
+					</tr>
+					</div>
+				</table>
+	      <button class="btn btn-success btn-lg btn-block" ng-click='Create();'>結果をみる</button>
+      </form>
     </div>
   </div>
 <%

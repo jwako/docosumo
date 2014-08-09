@@ -20,4 +20,6 @@
 //= require jquery-ui
 //= require bootstrap
 //= require seiyria-bootstrap-slider
-//= require slider.js
+//= require angular-bootstrap-slider
+//= require angular_app.js
+//= require_directory ./controllers
