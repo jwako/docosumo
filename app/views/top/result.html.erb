@@ -2,15 +2,17 @@
 <div class="col-sm-12">
 	<table class="table">
 	<tr>
-		<th class="col-xs-2 text-cebter">Ranking</th>
-		<th class="col-xs-5 text-center">行政区</th>
-		<th class="col-xs-5 text-center">ポイント</th>
+		<th class="col-xs-1 text-center">ランキング</th>
+		<th class="col-xs-2 text-center">行政区</th>
+		<th class="col-xs-2 text-center">ポイント</th>
+		<th class="col-xs-3 text-center"></th>
 	</tr>
 	<% @cities.each_with_index do |city, i| %>
 	<tr>
-		<td><%= i+1 %></th>
+		<td class="text-center"><%= i+1 %></th>
 		<td><%= city[0] %></th>
-		<td class="text-center"><%= city[1] %></th>
+		<td class="text-center"><%= number_with_precision(city[1], precision: 1) %></th>
+		<td></td>
 	</tr>
 	<% end %>
 	</table>

@@ -35,7 +35,7 @@
 	<td><%= datum.id %></td>
 	<td><%= datum.municipality.name %></td>
 	<td><%= datum.value %></td>
-	<td><%= datum.deviation_value %></td>
+	<td><%= number_with_precision(datum.deviation_value, precision: 1) %></td>
 	<td class="text-center"><%= link_to "Edit", edit_x_open_datum_path(datum), class: "btn btn-block btn-success" %></td>
 	<td class="text-center">
 		<%= link_to "Delete", x_open_datum_path(datum), method: :delete, 

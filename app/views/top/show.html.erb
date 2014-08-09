@@ -15,11 +15,11 @@
 		<% @categories.each do |category| %>
 		<tr>
 			<td><%= category.title %></td>
-		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][1]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][2]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][3]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][4]", true %></td>
-		 	<td class="text-center"><%= radio_button_tag "answers[#{category.id}][5]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][1]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][2]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][3]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][4]", true %></td>
+		 	<td class="text-center"><%= radio_button_tag "weights[#{category.id}][5]", true %></td>
 		</tr>
 		<% end %>
 	</table>

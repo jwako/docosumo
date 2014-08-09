@@ -40,7 +40,9 @@
   </div>
   <!--documents-->
   <div class="container documents">
-	<%= yield %>
+    <%= render 'common/notice' %>
+    <%= render 'common/alert' %>
+  	<%= yield %>
 	</div>
 </body>
 </html>
