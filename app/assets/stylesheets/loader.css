@@ -1,0 +1,11 @@
+.spinner {
+  margin: auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  background: url("/assets/ajax-loader.gif") no-repeat;
+  cursor: wait;
+}

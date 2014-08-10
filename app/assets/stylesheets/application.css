@@ -15,5 +15,6 @@
  *= require seiyria-bootstrap-slider
  *= require common.css
  *= require slider.css
+ *= require loader.css
  *= require_self
  */

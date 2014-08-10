@@ -1,4 +1,4 @@
-var docosumoControllers = angular.module('docosumoControllers', ['ui.bootstrap-slider']);
+var docosumoControllers = angular.module('docosumoControllers', ['ui.bootstrap', 'ui.bootstrap-slider']);
 
 docosumoControllers.controller('DocosumoCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.errors = [];
@@ -10,6 +10,7 @@ docosumoControllers.controller('DocosumoCtrl', ['$scope', '$http', '$window', fu
       value: 0
     };
     $scope.cities = [];
+    $scope.loading = false;
 
     $http.get('/top/categories.json', {}).success(function(data, status, headers, config) {
       $scope.categories = data;
@@ -21,6 +22,7 @@ docosumoControllers.controller('DocosumoCtrl', ['$scope', '$http', '$window', fu
     });
 
     $scope.Create = function() {
+      $scope.loading = true;
       $http.post('/top.json', {
         "weights": [
           {"id": $scope.categories[0].id, "weight": $scope.categories[0].sliderValue},
@@ -32,8 +34,10 @@ docosumoControllers.controller('DocosumoCtrl', ['$scope', '$http', '$window', fu
         ]
       }).success(function(data, status, headers, config) {
         $scope.cities = data;
+        $scope.loading = false;
       }).error(function(data, status) {
         $scope.errors = data;
+        $scope.loading = false;
       });
     }
   }

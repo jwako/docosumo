@@ -11,6 +11,7 @@
     "jqueryui-timepicker-addon": "latest",
     "Bootflat": "latest",
     "seiyria-bootstrap-slider": "latest",
-    "angular-bootstrap-slider": "latest"
+    "angular-bootstrap-slider": "latest",
+    "ajax-loader": "latest"
   }
 }
