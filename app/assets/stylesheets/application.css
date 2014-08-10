@@ -16,5 +16,6 @@
  *= require common.css
  *= require slider.css
  *= require loader.css
+ *= require modal.css
  *= require_self
  */

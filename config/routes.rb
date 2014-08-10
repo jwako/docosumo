@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root to: "top#show"
   resource :top, controller: :top, only: [:show, :create] do
-    get :categories
-    post :result
+    get :categories, on: :collection
+    post :result, on: :collection
   end
-
+  resources :cities, only: [:show]
+  resource :guides, only: :show
+  
   devise_scope :admin do
     get 'x', to: "devise/sessions#new", as: :admin_root
   end

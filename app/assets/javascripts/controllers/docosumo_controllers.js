@@ -42,3 +42,47 @@ docosumoControllers.controller('DocosumoCtrl', ['$scope', '$http', '$window', fu
     }
   }
 ]);
+
+docosumoControllers.controller('ModalDemoCtrl', ['$scope', '$modal', '$http', function ($scope, $modal, $http) {
+  $scope.items = [];
+  $scope.errors = [];
+
+  $scope.open = function (id) {
+    $http.get('/cities/' + id + '.json', {}).success(function(data, status, headers, config) {
+      $scope.items = data;
+      var modalInstance = $modal.open({
+        templateUrl: 'myModalContent.html',
+        controller: ModalInstanceCtrl,
+        size: 'lg',
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    }).error(function(data, status) {
+      $scope.errors = data;
+    });
+    // modalInstance.result.then(function (selectedItem) {
+    //   $scope.selected = selectedItem;
+    // }, function () {
+    //   // $log.info('Modal dismissed at: ' + new Date());
+    // });
+  };
+}
+]);
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};

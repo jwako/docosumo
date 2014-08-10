@@ -51,7 +51,7 @@
 				</tr>
 				<tr ng-repeat="city in cities">
 					<td class="text-center v">{{$index+1}}</th>
-					<td class="v">{{city[0]}}</th>
+					<td class="v">{{city[0]["name"]}}</th>
 					<td class="text-center v">{{city[1] | number:1}}</th>
 					<td class="v">
 						<div class="progress">
@@ -64,7 +64,11 @@
 			        </div>
 			      </div>
 					</td>
-					<td class="text-center v"></td>
+					<td class="text-center v">
+						<div ng-controller="ModalDemoCtrl">
+							<button class="btn btn-success" ng-click="open(city[0]['id'])">詳細をみる</button>
+						</div>
+					</td>
 				</tr>
 				</table>
 			</div>
@@ -74,3 +78,33 @@
 </div>
 
 </div>
+
+<script type="text/ng-template" id="myModalContent.html">
+<div class="modal-header">
+  <h3 class="modal-title">{{items[0].municipality}}の各種指標</h3>
+</div>
+<div class="modal-body">
+	<table class="table">
+		<tr>
+			<th class="text-center col-sm-2">カテゴリ</th>
+			<th class="text-center col-sm-3">指標</th>
+			<th class="text-center col-sm-1">値</th>
+			<th class="text-center col-sm-1">偏差値</th>
+			<th class="text-center col-sm-5">情報ソース</th>
+		</tr>
+	  <tr ng-repeat="item in items">
+		  <td>{{item.category_title}}</td>
+		  <td>{{item.indicator_title}}</td>
+		  <td class="text-right">{{item.value}}</td>
+		  <td class="text-right">{{item.deviation_value | number:1}}</td>
+		  <td>
+		  	<p><a href={{item.indicator_source_url}} target="_blank">{{item.indicator_source_title}}</a> ({{item.indicator_source_year}})</p>
+		  	<p><small>{{item.indicator_source_subtitle}}</small></p>
+		  </td>
+	  </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" ng-click="cancel()">閉じる</button>
+</div>
+</script>

@@ -3,7 +3,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  z-index: 1000;
+  z-index: 5000;
   width: 46px;
   height: 46px;
   background: url("/assets/ajax-loader.gif") no-repeat;
