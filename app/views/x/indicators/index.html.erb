@@ -15,6 +15,7 @@
 <tr>
 	<th class="col-sm-1">#</th>
 	<th class="col-sm-7">Name</th>
+	<th class="col-sm-1">PLUS</th>
 	<th class="col-sm-2">Sources#</th>
 	<th class="col-sm-1"></th>
 	<th class="col-sm-1"></th>
@@ -23,6 +24,7 @@
 <tr>
 	<td><%= indicator.id %></td>
 	<td><%= indicator.title %></td>
+	<td><%= indicator.plus %></td>
 	<td class="text-center">
 		<%= link_to indicator.indicator_sources.size, 
 					x_indicator_indicator_sources_path(indicator), class: "btn btn-info" %>

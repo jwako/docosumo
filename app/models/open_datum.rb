@@ -8,8 +8,11 @@ class OpenDatum < ActiveRecord::Base
 	validates :value, presence: true
 
 	def deviation
-		# 偏差値＝(得点－平均点)÷標準偏差×10＋50
-		(value - indicator_source.average)/indicator_source.standard_deviation * 10 + 50
+		if indicator_source.indicator.plus
+			return calc_deviation(1)
+		else
+			return calc_deviation(-1)
+		end
 	end
 
 	def as_json(options = {})
@@ -25,6 +28,13 @@ class OpenDatum < ActiveRecord::Base
 			value: value,
 			deviation_value: deviation_value
 		}
+	end
+
+	private
+
+	# 偏差値＝(得点－平均点)÷標準偏差×10＋50
+	def calc_deviation(plus)
+		(value - indicator_source.average)/indicator_source.standard_deviation * 10 * plus + 50
 	end
 
 end

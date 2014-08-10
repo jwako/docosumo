@@ -96,7 +96,7 @@
 # i61 = c6.indicators.create(:title => "刑法犯罪認知件数")
 # i62 = c6.indicators.create(:title => "交通事故発生件数")
 
-OpenDatum.all.each do |data|
-	data.deviation_value = data.deviation
-	data.save!
-end
+# OpenDatum.all.each do |data|
+# 	data.deviation_value = data.deviation
+# 	data.save!
+# end

@@ -44,7 +44,7 @@ class X::IndicatorsController < AdminController
   end
 
   def indicator_params
-    params.require(:indicator).permit(:id, :title)
+    params.require(:indicator).permit(:id, :title, :plus)
   end
 
   def setup_indicator

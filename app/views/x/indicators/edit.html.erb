@@ -4,7 +4,7 @@
     <div class="col-md-12">
 			<%= simple_form_for @indicator, url: x_indicator_path(@indicator) do |f| %>
 				<%= render "common/error", object: @indicator %>
-				<%= f.input :title %>
+				<%= render "form", f: f %>
 				<%= f.button :submit, "Submit", data: { disable_with: "Sending" } %>
 	    <% end %>
 	    <div class="clearfix"></div>
