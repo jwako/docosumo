@@ -44,6 +44,15 @@ class X::IndicatorSourcesController < AdminController
     redirect_to x_indicator_indicator_sources_path(@indicator), notice: "Source was successfully toggled."
   end
 
+  def deviation
+    setup_indicator_source
+    @source.open_data.each do |data|
+      data.deviation_value = data.deviation
+      data.save!
+    end
+    redirect_to x_indicator_indicator_sources_path(@indicator), notice: "Deviation was successfully calculated."
+  end
+
   private
 
   def setup_context

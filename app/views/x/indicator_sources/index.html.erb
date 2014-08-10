@@ -14,9 +14,10 @@
 <table class="table">
 <tr>
 	<th class="col-sm-1">#</th>
-	<th class="col-sm-5">Title</th>
+	<th class="col-sm-4">Title</th>
 	<th class="col-sm-1">Published</th>
 	<th class="col-sm-1">Source</th>
+	<th class="col-sm-1"></th>
 	<th class="col-sm-1"></th>
 	<th class="col-sm-1"></th>
 	<th class="col-sm-1"></th>
@@ -29,7 +30,7 @@
 		<p><%= source.title %></p>
 		<p><small><%= source.sub_title %></small></p>
 	</td>
-	<td><%= source.year %> / <%= source.month %></td>
+	<td class="text-center"><%= source.year %> / <%= source.month %></td>
 	<td><%= link_to "Link", source.url, target: "_blank" %></td>
 	<td class="text-center">
 		<%= button_to "Toggle", toggle_x_indicator_source_path(source), class: "btn btn-block btn-warning" %>
@@ -42,6 +43,9 @@
 	</td>
 	<td class="text-center">
 		<%= link_to "Data", x_indicator_source_open_data_path(source), class: "btn btn-block btn-info" %>
+	</td>
+	<td class="text-center">
+		<%= button_to "Deviation", deviation_x_indicator_source_path(source), class: "btn btn-block btn-success" %>
 	</td>
 </tr>
 <% end %>

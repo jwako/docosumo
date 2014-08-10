@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :indicators, shallow: true do
         resources :indicator_sources do
           post :toggle, on: :member
+          post :deviation, on: :member
           resources :open_data do
             post :upload, on: :collection
           end
